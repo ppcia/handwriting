@@ -2,9 +2,9 @@
 
 在调用new过程中大概做了几件事:
 * 1. 返回（产生）一个新的对象
-* 2. 链接到原型
-* 3. 设置了this的指向（指向新生成的实例对象
-* 4. 返回新对象
+* 2. 将对象与构造函数通过原型链连接起来
+* 3. 设置了this的指向（指向新生成的实例对象）
+* 4. 根据构建函数返回类型作判断，如果是原始值则被忽略，如果是返回对象，需要正常处理
 
 ## 思路：
     步骤如下：
@@ -25,7 +25,7 @@ function myNew() {
     // 新建一个空对象，对象的原型为构造函数的prototype对象
     newObject = Object.create(construct.prototype)
     // 绑定this并执行构造函数
-    result = construct.apply(newObject, arguments)
+    let result = construct.apply(newObject, arguments)
 
     // 如果函数返回非空并且是对象 则返回 result，否则返回 newObj
     return result instanceof Object ? result : newObject
