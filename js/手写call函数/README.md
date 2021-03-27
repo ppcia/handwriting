@@ -8,3 +8,23 @@ call函数的实现步骤：
 * 5. 使用上下文对象来调用这个方法，并保存返回结果
 * 6. 删除刚才新增的属性
 * 7. 返回结果
+
+## 实现
+```javascript
+Function.prototype.myCall = function (context) {
+    // 判断调用函数
+    if (typeof this !== 'function') {
+        console.error('type error')
+    }
+
+    // 获取参数
+    let args = [...arguments].slice(1)
+    //判断context是否传入，如果没传入则设置为window
+    context = context || window
+    //将调用函数设置对象的方法
+    context.fn = this
+    let result = context.fn(...args)
+    delete context.fn
+    return result
+}
+```
