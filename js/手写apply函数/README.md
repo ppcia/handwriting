@@ -12,7 +12,7 @@ apply函数的实现步骤：
 ## 实现
 ```javascript
 Function.prototype.myApply=function(context){
-    if(typeof context !== 'function'){
+    if(typeof this !== 'function'){
         console.error('type error')
     }
 

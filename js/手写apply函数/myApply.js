@@ -1,7 +1,7 @@
 Function.prototype = function (context) {
 
     // 判断调用对象是否是函数
-    if (typeof context !== 'function') {
+    if (typeof this !== 'function') {
         console.error('typeof error')
     }
 
