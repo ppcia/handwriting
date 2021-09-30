@@ -52,4 +52,3 @@ function throttle3(fn, wait) {
         }
     }
 }
-
